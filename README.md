@@ -13,8 +13,8 @@ board to win.
   <img src="screenshots/3d-level30.png" alt="Level 30 — 216-tile pyramid" width="280"/>
 </p>
 
-*Level 5 (36 tiles) and level 30 (216 tiles). Captured before the buttons
-became pictures; they now show icons, not words.*
+*Level 5 (36 tiles) and level 30 (216 tiles). The picture buttons under the
+tray are undo, clear 3 and shuffle; restart is the round arrow top right.*
 
 ## Install on Android
 
