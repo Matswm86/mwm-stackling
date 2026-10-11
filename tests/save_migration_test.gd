@@ -1,6 +1,6 @@
 extends SceneTree
 
-# Headless check of the save rename (Tile Explorer -> MWM Brikkejakt).
+# Headless check of the save rename (Tile Explorer -> MWM Stackling).
 # Run: godot --headless --audio-driver Dummy -s res://tests/save_migration_test.gd
 # Existing save files in user:// are moved aside and restored afterwards.
 
