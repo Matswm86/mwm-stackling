@@ -35,6 +35,8 @@ Permanent versioned downloads are also published to the
 [Releases page](https://github.com/Matswm86/mwm-stackling/releases) when a
 `vX.Y.Z` tag is pushed.
 
+**Open in the browser:** https://play.mwmai.no
+
 ## How to play
 
 - Tap any **unblocked** tile (one not covered by another tile above it). It
@@ -187,7 +189,7 @@ tests/
 
 ## Running inside a host app (MWM Play)
 
-- Touch layout at 1080 px wide: buttons have 216 px touch areas (12.7 mm at
+- Touch layout at 1080 px wide: buttons have 216 px touch areas (12.8 mm at
   430 dpi) and act on release. The top-left 232x232 px square is left empty
   for the host's home button, and nothing tappable sits in the bottom 256 px.
   A tap on the win or lose card that starts in either zone does not count.
