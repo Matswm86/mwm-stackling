@@ -13,13 +13,8 @@ board to win.
   <img src="screenshots/3d-level30.png" alt="Level 30 — 216-tile pyramid" width="280"/>
 </p>
 
-Since v1.0 the game renders as a true 3D scene: rounded beveled tiles
-(procedural meshes) on a walnut table with a felt mat, a top-down perspective
-camera, a rimmed wooden tray rack, a directional sun with real-time
-shadows, arc fly-to-tray animations with landing squash, and particle
-bursts on matches. The 12 cartoon icons are still authored as 2D `_draw()`
-vector art (inspired by Tile Trip) and are baked into textures at startup —
-there are **no external assets** anywhere in the project.
+*Level 5 (36 tiles) and level 30 (216 tiles). Captured before the buttons
+became pictures; they now show icons, not words.*
 
 ## Install on Android
 
@@ -66,6 +61,26 @@ Round picture buttons under the tray; dots under each show charges left
 | **Clear 3** (three tiles with a burst) | Deletes the leftmost 3 tiles in the tray, **plus** enough matching board tiles of the same icons to keep every icon's remaining count a multiple of 3 (so the level stays solvable). |
 | **Shuffle** (crossed arrows) | Randomly re-assigns the icons on remaining board tiles. |
 
+## How it works
+
+Stackling is built with Godot 4.6 and GDScript on the Mobile renderer. Since
+v1.0 the game renders as a true 3D scene: rounded beveled tiles (procedural
+meshes) on a walnut table with a felt mat, a top-down perspective camera, a
+rimmed wooden tray rack, a directional sun with real-time shadows, arc
+fly-to-tray animations with landing squash, and particle bursts on matches.
+The 12 cartoon icons are authored as 2D `_draw()` vector art (inspired by
+Tile Trip) and baked into textures at startup, so there are **no external
+assets** anywhere in the project. The 30 levels are JSON files of tile
+positions and layers, and a tile is blocked while a tile on a higher layer
+overlaps it. A touch is a camera ray tested against the tiles, and the tray
+clears a triple by counting icons.
+
+## Status
+
+Version 1.0.0, 30 levels, shipped as a debug-signed APK from the rolling
+`latest` build. Not done: sound, and saving a half-played board (the game
+resumes at the start of the level you were on).
+
 ## Run from source (desktop)
 
 1. Install **Godot 4.6.x** from https://godotengine.org/ (single binary, no
@@ -97,8 +112,8 @@ on other resolutions).
   only when no tile on a strictly higher layer overlaps its bounding box.
 - Each icon must appear in a multiple of 3 (so triples can clear).
 
-Generate or hand-author additional levels and bump `max_level` in the Game
-scene to expose them.
+Generate or hand-author additional levels and bump `max_level` in
+`scripts/GameManager3D.gd` to expose them.
 
 ## Difficulty curve
 
@@ -167,6 +182,7 @@ data/levels/
 tests/
   capture.gd                    Screenshot and touch bot (not exported)
   capture.tscn                  Scene that runs the bot
+  save_migration_test.gd        Headless check of the save-file rename (not exported)
 ```
 
 ## Running inside a host app (MWM Play)
@@ -187,6 +203,8 @@ tests/
   `highest_level`), written on every win, on pause and on close. If it is
   missing, the old `user://tile_explorer_save.json` from before the rename
   is read once and copied forward (the old file is left in place).
+  `godot --headless --audio-driver Dummy -s res://tests/save_migration_test.gd`
+  checks this.
 
 ## Screenshot and touch bot
 
